@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>甘酖 Allcanholic</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="FlexSlider/jquery.flexslider.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            var bodyClass = document.body.classList,
+                lastScrollY = 0;
+            window.addEventListener('scroll', function(){
+              var st = this.scrollY;
+              
+              if( st < lastScrollY) {
+                bodyClass.remove('hideUp');
+              }else{
+                bodyClass.add('hideUp');
+              }
+              lastScrollY = st;
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.flexslider').flexslider();
+
+            $('.link,#go-top').click(function(e){
+                e.preventDefault();
+                var target = $(e.currentTarget).attr('href');
+                var offset = $(target).offset();
+                $("html,body").animate({scrollTop:offset.top-50});
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            for(i=0;i<5;i++){
+                $("#menu span:eq("+i+")").click({id:i},function(e){
+                    n=e.data.id
+                    change()
+                    clearInterval(clock)
+                    clock=setInterval(auto,4000)
+                    
+                })
+            }
+            
+            n=0
+            clock=setInterval(auto,4000)
+            $("#drink img").mouseenter(function(){
+                clearInterval(clock)
+            })
+            $("#drink img").mouseleave(function(){
+                clock=setInterval(auto,4000)
+            })
+            function auto(){
+                n++
+                if(n>4){
+                    n=0
+                }
+                change()
+            }
+            function change(){
+                $("#drink img").fadeOut(400,function(){
+                    $("#drink img").attr("src","img/product/product"+n+".png")
+                    $("#drink img").fadeIn()
+                    
+                })
+                
+                $("#menu span").attr("class","dot2")
+                $("#menu span:eq("+n+")").attr("class","dot1")
+                $("#infoChange").fadeOut(400,function(){
+                    $("#info"+n+"").siblings().css({"display":"none"})
+                    $("#info"+n+"").css({"display":"block"})
+                    $("#infoChange").fadeIn()
+                })
+                
+            }
+
+            $('#alert').click(function(e){
+                $('.modal'+n+'').fadeIn(function(e){
+                    $('.p0').stop().animate({"left":"0","opacity":"1",},500)
+                    $('.p1').stop().delay(500).animate({"left":"0","opacity":"1",},500)
+                    $('.p2').stop().delay(600).animate({"left":"0","opacity":"1",},500)
+                    $('.p3').stop().delay(700).animate({"left":"0","opacity":"1",},500)
+                    $('.p4').stop().delay(800).animate({"left":"0","opacity":"1",},500)
+                    $('.p5').stop().delay(900).animate({"left":"0","opacity":"1",},500)
+                    $('.p6').stop().delay(1000).animate({"left":"0","opacity":"1",},500)
+                    var offset = $("#products").offset();
+                    $("html,body").animate({scrollTop:offset.top-102});
+                    });
+            });
+                      
+            $('.backBtn').click(function(e){
+                $('.modal-container').fadeOut(function(e){
+                    $('.p0,.p1,.p2,.p3,.p4,.p5,.p6').stop().animate({"left":"-80%","opacity":"0",},1000)
+                });
+                });
+            
+        })
+    </script>
+    <!-- <script>
+        $(document).ready(function(){
+            for(i=0;i<5;i++){
+                $("#menu span:eq("+i+")").click({id:i},function(e){
+                    n=e.data.id
+                    change()
+                    
+                })
+            }
+            
+            n=0
+            clock=setInterval(auto,4000)
+            $("#drink img").mouseenter(function(){
+                clearInterval(clock)
+            })
+            $("#drink img").mouseleave(function(){
+                clock=setInterval(auto,4000)
+            })
+            function auto(){
+                n++
+                if(n>4){
+                    n=0
+                }
+                change()
+            }
+            function change(){
+                $("#drink img").fadeOut(400,function(){
+                    $("#drink img").attr("src","img/title/"+n+".png")
+                    $("#drink img").fadeIn()
+                })
+                
+                $("#menu span").attr("class","dot2")
+                $("#menu span:eq("+n+")").attr("class","dot1")
+            }
+        })
+    </script> -->
+</head>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="FlexSlider/flexslider.css" type="text/css">
+<link rel="stylesheet" href="CSS/Normalize.css">
+<link rel="stylesheet" href="CSS/EasyDrink_Css.css">
+<link rel="icon" type="image/png" sizes="32x32" href="img/logo.png">
+
+<body>
+    <div id="header">
+    	<div class="header-align clearfix">
+        	<div id="logo">
+            	<a class="link" href="#slider"><img src="img/LOGO.png" alt="logo" style="width: 100px"></a>
+    		</div>
+
+            <div class="nav">
+                <ul class="clearfix">
+                    <li><a class="link" href="#slider">最新活動</a></li>
+                    <li><a class="link" href="#featured">展場資訊</a></li>
+                    <li><a class="link" href="#about">關於甘酖</a></li>
+                    <li><a class="link" href="#products">產品介紹</a></li>
+                    <li><a class="link" href="#media">甘酖錦集</a></li>
+                    <li class="boundary"><a class="link" href="#categories">贊助廠商</a></li>
+                    <li><a class="link" href="#footer">社群媒體</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="slider">
+            <div class="slider-container">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <a href="#"><img src="img/banner/banner0.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner1.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner2.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner3.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner4.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner5.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner6.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner7.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/banner/banner8.jpg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="featured" class="featured">
+            <div class="container clearfix">
+                <div class="col-6 unlimited">
+                    <img src="img/unlimited.png" alt="product">
+                </div>
+                <div class="col-6 info">
+                    <div class="subtitle">「運用各種排列組合，製造更多無限可能」</div>
+                    <h1 class="title">無限製</h1>
+                    <h3 class="name">#UNLIMITED</h3>
+                    <p>『無限·製』 <br> 象徵著我們在有限的四年內， <br> 創製出無限的價值。</p>
+                    <div class="price">5/3 Fri.  10:00-17:30 <br> 5/4 Sat.  10:00-19:00 <br> 5/5 Sun.  10:00-19:00</div>
+                    <div class="locate"><h2>· 松山文創園區 四號倉庫 ·</h2></div>
+                    <div><a class="fb" href="https://www.facebook.com/2019pccudic/" target="blank">FACEBOOK</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="about">
+            <div class="event">
+            <div class="container">
+                <h3 class="subtitle">About Us</h3>
+                <h1 class="title">甘酖故事</h1>
+                <p>我們想要做的是一款「台灣在地的調酒」，能夠讓消費者藉由啜飲我們的調酒，來認識更多的台灣特有文化，也能在小酌嚐酒的過程中放鬆大家心情，把煩惱通通丟在一旁，讓自己的生活能更加簡單，正如我們的slogan「來杯甘酖，讓生活更簡單」。<br><br>
+
+                台灣茶，相信大家都知道台灣茶在世界各地是數一數二的有名，因此我們認為台灣的茶葉是最能夠代表台灣的一大特色，所以想將台灣的茶葉，與調酒做為結合。讓消費者在品嚐我們的調酒時，間接能夠體驗到台灣茶的獨特香氣以及台灣茶的風味。<br><br>
+
+                為什麼想與台灣茶做結合呢？酒與茶有個共同點，就是需要人力的製程與土地的培養，才能孕育出產物，最後才能變成桌上這杯「甘酖調酒」，然而最重要的是讓消費者知道且了解到原來台灣也能創造出屬於自己的「在地調酒」。
+                </p>
+            </div>
+            </div>
+        </div>
+
+
+
+        <div id="products" class="">
+            <div class="container clearfix featured">
+
+                <div class="col-6 info">
+                    <div id="infoChange">
+                        <div id="info0" class="displayN">
+                            <div class="title">百花橙艷</div>
+                            <h3 class="name">Dear Formosa</h3>
+                            <p>有「水果王國」之稱的台灣，<br>自然擁有了許多美味，<br>                    由西方特產龍舌蘭酒配上台灣的水果特產，<br>
+                            中西合璧打造出新的風格，<br>同時也能完整的表現出台灣的多元特色。</p>
+                            <!-- <div><a class="fb" href="https://www.facebook.com/allcanholic/" target="blank">FACEBOOK</a></div> -->
+                        </div>
+                        <div id="info1" class="displayN">
+                            <div class="title">含情茉茉</div>
+                            <h3 class="name">Love Vibe</h3>
+                            <p>含蓄的茉莉花茶的清香，卻利用強烈的氣泡感來傳達，<br>如同少女那充滿愛戀的心，卻只能癡癡地望著心上人，<br>而無法表白一般，稚嫩但充滿情感，清甜但口感十足。</p>
+                            <!-- <div><a class="fb" href="https://www.facebook.com/allcanholic/" target="blank">FACEBOOK</a></div> -->
+                        </div>
+                        <div id="info2" class="displayN">
+                            <div class="title">情啡得已</div>
+                            <h3 class="name">Coffeine Love</h3>
+                            <p>「只怕我自己會愛上你，<br>不敢讓自己靠得太近」，<br>曖昧是戀愛最美的時候，<br>過分的甜蜜，但又帶有一些些的苦澀，<br>不敢向前又無法後退，<br>卻又令人欲罷不能、無法自拔。</p>
+                            <!-- <div><a class="fb" href="https://www.facebook.com/allcanholic/" target="blank">FACEBOOK</a></div> -->
+                        </div>
+                        <div id="info3" class="displayN">
+                            <div class="title">掌上明珠</div>
+                            <h3 class="name">My Precious</h3>
+                            <p>「篳路藍縷，以啟山林」，<br>代表了台灣人的堅毅和草根性，<br>默默過著簡單的生活，<br>但誰說簡單不偉大呢？<br>讓我們透過葡萄的清甜，<br>為您樸實無華的生活，增添一點清香吧！</p>
+                            
+                        </div>
+                        <div id="info4" class="displayN">
+                            <div class="title">葡實無華</div>
+                            <h3 class="name">Taiwan Spirits</h3>
+                            <p>依稀記得青春時，那甜入心底的滋味，<br>是悸動 是快樂 是自由奔放，<br>如今被現實壓的喘不過氣的我們，<br>還記得多少當初的純真呢？<br>每一顆珍珠，都是一個回憶。<br>屬於大人的珍珠奶茶，帶您一起回憶曾經美好的年代！</p>
+                            <!-- <div><a class="fb" href="https://www.facebook.com/allcanholic/" target="blank">FACEBOOK</a></div> -->
+                        </div>
+                    </div>
+                    <div><a id="alert" class="fb" href="#alert">詳細資訊</a></div>
+                </div>
+
+                <div class="col-6">
+                    <div id=drink><img src="img/product/product0.png"></div>
+                    <div id=menu><span class="dot1">·</span><span class="dot2">·</span><span class="dot2">·</span><span class="dot2">·</span><span class="dot2">·</span></div>
+                </div>
+            </div>
+
+
+            <div class="modal-container modal0">
+                 <div class="modal">
+                    <div class="title"><h3>百花橙艷</h3></div>
+                    <div class="container">
+                        <div class="progress-bar">
+                            <div class="progress p0" style="width: 32%;">&nbsp;</div>
+                            <div class="pin p0">45ml</div>
+                        </div><div class="text">龍舌蘭酒+烏龍茶 </div>
+                        <div class="progress-bar ">
+                            <div class="progress p1" style="width: 21%;">&nbsp;</div>
+                            <div class="pin p1">30ml</div>
+                        </div><div class="text">百香果汁</div>
+                        <div class="progress-bar">
+                            <div class="progress p2" style="width: 21%;">&nbsp;</div>
+                            <div class="pin p2">30ml</div>
+                        </div><div class="text">柳橙汁</div>
+                        <div class="progress-bar">
+                            <div class="progress p3" style="width: 10%;">&nbsp;</div>
+                            <div class="pin p3">15ml</div>
+                        </div><div class="text">檸檬汁</div>
+                        <div class="progress-bar">
+                            <div class="progress p4" style="width: 7%;">&nbsp;</div>
+                            <div class="pin p4">20ml</div>
+                        </div><div class="text">蜂蜜</div>
+                        <div class="progress-bar">
+                            <div class="progress p5" style="width: 50%;">&nbsp;</div>
+                            <div class="pin p5">一顆蛋</div>
+                        </div><div class="text">蛋</div>
+                        <div class="progress-bar">
+                            <div class="progress p6" style="width: 30%;">&nbsp;</div>
+                            <div class="pin p6">請打入一顆蛋的量，並將蛋黃、蛋白分離，倒入蛋白後搖盪</div>
+                        </div><div class="text">備註：</div>
+                        <div class="btncenter"><a  class="youtubeBtn2" href="">YOUTUBE</a></div>
+                    </div>
+                    <div class="footer">
+                        <button  class="backBtn">close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-container modal1">
+                 <div class="modal">
+                    <div class="title"><h3>含情茉茉</h3></div>
+                    
+                    <div class="container">
+                        <div class="progress-bar">
+                            <div class="progress p0" style="width: 70%;">&nbsp;</div>
+                            <div class="pin p0">60ml</div>
+                        </div><div class="text">琴酒+茉莉花茶</div>
+                        <div class="progress-bar">
+                            <div class="progress p1" style="width: 12%;">&nbsp;</div>
+                            <div class="pin p1">10ml</div>
+                        </div><div class="text">糖水</div>
+                        <div class="progress-bar">
+                            <div class="progress p2" style="width: 18%;">&nbsp;</div>
+                            <div class="pin p2">15ml</div>
+                        </div><div class="text">檸檬水</div>
+                        <div class="progress-bar">
+                            <div class="progress p3" style="width: 30%;">&nbsp;</div>
+                            <div class="pin p3">最後加至全滿</div>
+                        </div><div class="text">通寧水</div>
+                        <div class="progress-bar">
+                            <div class="progress p6" style="width: 30%;">&nbsp;</div>
+                            <div class="pin p6">此款不加冰塊直接手搖</div>
+                        </div><div class="text">備註：</div>
+                        <div class="btncenter"><a  class="youtubeBtn2" href="">YOUTUBE</a></div>
+                    </div>
+                    <div class="footer">
+                        <button  class="backBtn">close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-container modal2">
+                 <div class="modal">
+                    <div class="title"><h3>情啡得已</h3></div>
+                    
+                    <div class="container">
+                        <div class="progress-bar">
+                            <div class="progress p0" style="width: 18%;">&nbsp;</div>
+                            <div class="pin p0">22.5ml</div>
+                        </div><div class="text">伏特加</div>
+                        <div class="progress-bar ">
+                            <div class="progress p1" style="width: 18%;">&nbsp;</div>
+                            <div class="pin p1">22.5ml</div>
+                        </div><div class="text">貝禮詩奶酒</div>
+                        <div class="progress-bar">
+                            <div class="progress p2" style="width: 18%;">&nbsp;</div>
+                            <div class="pin p2">22.5ml</div>
+                        </div><div class="text">榛果酒</div>
+                        <div class="progress-bar">
+                            <div class="progress p3" style="width: 24%;">&nbsp;</div>
+                            <div class="pin p3">30ml</div>
+                        </div><div class="text">牛奶</div>
+                        <div class="progress-bar">
+                            <div class="progress p4" style="width: 24%;">&nbsp;</div>
+                            <div class="pin p4">30ml</div>
+                        </div><div class="text">古坑咖啡</div>
+                        <div class="progress-bar">
+                            <div class="progress p5" style="width: 50%;">&nbsp;</div>
+                            <div class="pin p5">兩顆 or 一盒</div>
+                        </div><div class="text">小美冰淇淋</div>
+                        <div class="progress-bar">
+                            <div class="progress p6" style="width: 50%;">&nbsp;</div>
+                            <div class="pin p6">此款調酒需加入碎冰，全部放置果汁機後打碎攪拌</div>
+                        </div><div class="text">備註：</div>
+                        <div class="btncenter"><a  class="youtubeBtn2" href="">YOUTUBE</a></div>
+                    </div>
+                    <div class="footer">
+                        <button  class="backBtn">close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-container modal3">
+                 <div class="modal">
+                    <div class="title"><h3>掌上明珠</h3></div>
+                    
+                    <div class="container">
+                        <div class="progress-bar">
+                            <div class="progress p0" style="width: 45%;">&nbsp;</div>
+                            <div class="pin p0">60ml</div>
+                        </div><div class="text">嘎瑪蘭威士忌+紅茶</div>
+                        <div class="progress-bar ">
+                            <div class="progress p1" style="width: 23%;">&nbsp;</div>
+                            <div class="pin p1">30ml</div>
+                        </div><div class="text">貝禮詩奶酒</div>
+                        <div class="progress-bar">
+                            <div class="progress p2" style="width: 33%;">&nbsp;</div>
+                            <div class="pin p2">45ml</div>
+                        </div><div class="text">牛奶</div>
+                        <div class="progress-bar">
+                            <div class="progress p3" style="width: 50%;">&nbsp;</div>
+                            <div class="pin p3">依照個人喜好加入</div>
+                        </div><div class="text">珍珠</div>
+                        <div class="btncenter"><a  class="youtubeBtn2" href="">YOUTUBE</a></div>
+                    </div>
+                    <div class="footer">
+                        <button  class="backBtn">close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-container modal4">
+                 <div class="modal">
+                    <div class="title"><h3>葡實無華</h3></div>
+                    
+                    <div class="container">
+                        <div class="progress-bar">
+                            <div class="progress p0" style="width: 32%;">&nbsp;</div>
+                            <div class="pin p0">45ml</div>
+                        </div><div class="text">鐵觀音+嘎瑪蘭威士忌</div>
+                        <div class="progress-bar ">
+                            <div class="progress p1" style="width: 32%;">&nbsp;</div>
+                            <div class="pin p1">45ml</div>
+                        </div><div class="text">巨峰紫葡萄利口酒</div>
+                        <div class="progress-bar">
+                            <div class="progress p2" style="width: 21%;">&nbsp;</div>
+                            <div class="pin p2">30ml</div>
+                        </div><div class="text">蔓越梅汁</div>
+                        <div class="progress-bar">
+                            <div class="progress p3" style="width: 7%;">&nbsp;</div>
+                            <div class="pin p3">10ml</div>
+                        </div><div class="text">檸檬汁</div>
+                        <div class="progress-bar">
+                            <div class="progress p4" style="width: 5%;">&nbsp;</div>
+                            <div class="pin p4">15ml</div>
+                        </div><div class="text">糖水</div>
+                        <div class="btncenter"><a  class="youtubeBtn2" href="">YOUTUBE</a></div>
+                    </div>
+                    <div class="footer">
+                        <button  class="backBtn">close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    	<!-- <div id="products" class="recent-prodoct">
+    		<div class="p-container">
+    		
+    			<div class="products">
+    				<ul class="clearfix row">
+    					<li class="col-6 product clearfix">
+    						<div class="thumbnail clearfix">
+                                <div class="cover">
+                                    <a href="#"><img src="img/title/1.png" alt=""></a></div>  
+                                <div class="col-4">
+    							     <img src="img/product/1.jpg" alt="product">
+                                </div>
+                                <div class="col-8"><p>有「水果王國」之稱的台灣，<br>自然擁有了許多美味，<br>                    由西方特產龍舌蘭酒配上台灣的水果特產，<br>
+                                                    中西合璧打造出新的風格，<br>同時也能完整的表現出台灣的多元特色。</p></div> 
+    						</div>
+    					</li>
+    					<li class="col-6 product clearfix">
+                            <div class="thumbnail clearfix">
+                                <div class="cover">
+                                    <a href="#"><img src="img/title/2.png" alt=""></a></div>
+                                <div class="col-4">
+                                     <img src="img/product/2.jpg" alt="product">
+                                </div>
+                                <div class="col-8"><p>含蓄的茉莉花茶的清香，卻利用強烈的氣泡感來傳達，<br>如同少女那充滿愛戀的心，卻只能癡癡地望著心上人，<br>而無法表白一般，稚嫩但充滿情感，清甜但口感十足。</p></div> 
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="clearfix row">
+                        <li class="col-6 product clearfix">
+                            <div class="thumbnail clearfix">
+                                <div class="cover">
+                                    <a href="#"><img src="img/title/3.png" alt=""></a></div>
+                                <div class="col-4">
+                                     <img src="img/product/3.jpg" alt="product">
+                                </div>
+                                <div class="col-8"><p>「只怕我自己會愛上你，<br>不敢讓自己靠得太近」，<br>曖昧是戀愛最美的時候，<br>過分的甜蜜，但又帶有一些些的苦澀，<br>不敢向前又無法後退，<br>卻又令人欲罷不能、無法自拔。</p></div> 
+                            </div>
+                        </li>
+                        <li class="col-6 product clearfix">
+                            <div class="thumbnail clearfix">
+                                <div class="cover">
+                                    <a href="#"><img src="img/title/5.png" alt=""></a></div>
+                                <div class="col-4">
+                                     <img src="img/product/5.jpg" alt="product">
+                                </div>
+                                <div class="col-8"><p>「篳路藍縷，以啟山林」，<br>代表了台灣人的堅毅和草根性，<br>默默過著簡單的生活，<br>但誰說簡單不偉大呢？<br>讓我們透過葡萄的清甜，<br>為您樸實無華的生活，增添一點清香吧！</p></div>   
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="clearfix row">
+                        <li class="col-3"></li>
+                        <li class="col-6 product clearfix">
+                            <div class="thumbnail clearfix">
+                                <div class="cover">
+                                    <a href="#"><img src="img/title/4.png" alt=""></a></div>
+                                <div class="col-4">
+                                     <img src="img/product/4.jpg" alt="product">
+                                </div>
+                                <div class="col-8"><p>依稀記得青春時，那甜入心底的滋味，<br>是悸動 是快樂 是自由奔放，<br>如今被現實壓的喘不過氣的我們，<br>還記得多少當初的純真呢？<br>每一顆珍珠，都是一個回憶。<br>屬於大人的珍珠奶茶，帶您一起回憶曾經美好的年代！</p></div>
+                            </div>
+                        </li>
+                        <li class="col-3"></li>
+    				</ul>
+    			</div>
+    		</div>
+    	</div> -->
+
+        <div id="media">
+            <div class="media">
+            <div class="container">
+                <h3 class="subtitle">YOUTUBE CHANNEL</h3>
+                <h1 class="title">甘酖 Allcanholic</h1>
+                <a  class="youtubeBtn" href="https://www.youtube.com/channel/UC4bXSUz4WkaQDhGuXn1bXEA" target="blank">YOUTUBE</a>
+                <!-- <p>我們想要做的是一款「台灣在地的調酒」，能夠讓消費者藉由啜飲我們的調酒，來認識更多的台灣特有文化，也能在小酌嚐酒的過程中放鬆大家心情，把煩惱通通丟在一旁，讓自己的生活能更加簡單，正如我們的slogan「來杯甘酖，讓生活更簡單」。<br><br>
+
+                台灣茶，相信大家都知道台灣茶在世界各地是數一數二的有名，因此我們認為台灣的茶葉是最能夠代表台灣的一大特色，所以想將台灣的茶葉，與調酒做為結合。讓消費者在品嚐我們的調酒時，間接能夠體驗到台灣茶的獨特香氣以及台灣茶的風味。<br><br>
+
+                為什麼想與台灣茶做結合呢？酒與茶有個共同點，就是需要人力的製程與土地的培養，才能孕育出產物，最後才能變成桌上這杯「甘酖調酒」，然而最重要的是讓消費者知道且了解到原來台灣也能創造出屬於自己的「在地調酒」。
+                </p> -->
+
+            </div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div id="categories">
+            <div class="intro">
+                    <h2>贊助廠商</h2>
+                    <hr/>
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus hic rerum beatae.</p> -->
+            </div>
+            <div class="s-container">
+                <div class="row clearfix">  
+                    <div class="col-6 category"><a href="#">
+                        <img src="img/sponsor/1.png" alt="catagory">
+                    </a></div>
+                    <div class="col-6 category"><a href="#">
+                        <img src="img/sponsor/2.png" alt="catagory">
+                    </a></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-4 category"><a href="#">
+                        <img src="img/sponsor/3.jpg" alt="catagory">
+                    </a></div>
+                    <div class="col-4 category"><a href="#">
+                        <img src="img/sponsor/4.jpg" alt="catagory">
+                    </a></div>
+                    <div class="col-4 category"><a href="#">
+                        <img src="img/sponsor/5.jpg" alt="catagory">
+                    </a></div>
+                </div>
+            </div>
+        </div>
+    	
+
+
+    </div>
+
+    <div id="footer">
+    	<div class="container clearfix">
+    		<div class="logo">
+    			<img src="img/LOGO_min.png" alt="logo" style="width: 58px">
+    		</div>
+    		<div class="copyright">
+    			<div class="title">&copy; UNLIMITED B09.</div>
+    			<div class="subtitle">&nbsp;&nbsp;&nbsp;COME AND FOLLOW US</div>
+    		</div>
+    		<div class="social-media">
+    			<ul class="clearfix">
+    				<li><a href="#" style="color: #3b5998"><strong>FB</strong></a></li>
+    				<li><a href="#" style="color: #833ab4"><strong>IG</strong></a></li>
+    				<li><a href="#" style="color: #ea4335"><strong>M</strong></a></li>
+    			</ul>
+    		</div>
+    	</div>
+    </div>
+
+    <div ><a href="#slider" id="go-top" class="link">▲</a></div>
+</body>
+
+</html>
